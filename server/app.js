@@ -12,7 +12,11 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const crypto = require('crypto');
 
-mongoose.connect(config.database,{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false}).then(()=>{//console.log.log("DataBase connected successfully")}).catch(err=>{//console.log.error(err) });
+mongoose.connect(config.database,{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false}).then(()=>{
+    console.log.log("DataBase connected successfully")
+}).catch(err=>{
+    console.log.error(err) 
+});
 let db = mongoose.connection;
 
 // Check connection
@@ -127,11 +131,10 @@ app.get('*', function(req, res, next) {
     res.locals.user = req.user || null;
     //console.log.log("this is user from '*' :",res.locals.user)
     res.sendFile(path.join(__dirname,'../client/build/index.html'));
-    //next();
 });
 
 // Start Server
 const port = process.env.PORT || 5000
 app.listen(port, function() {
-    //console.log.log('Server started on port '+port);
-});
+    console.log.log('Server started on port '+port);
+})
