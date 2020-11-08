@@ -33,12 +33,12 @@ export default function AppContainer({
 
       hamburger.addEventListener("click", () => {
         t1.reversed() ? t1.play() : t1.reverse();
-        console.log("button clicked");
+        //console.log.log("button clicked");
       });
 
       hamburger.addEventListener('mouseout',()=>{
         t1.reversed()? t1.play(): t1.reverse();
-        console.log("button clicked")
+        //console.log.log("button clicked")
       })
     }
       
@@ -65,7 +65,7 @@ export default function AppContainer({
     t4.reversed(true);
     if (themeSwitch)
       themeSwitch.addEventListener("click", () => {
-        console.log("switch event listener added");
+        //console.log.log("switch event listener added");
         const dark = () => {
           t4.play();
           window.localStorage.setItem("theme", "dark");

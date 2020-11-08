@@ -12,14 +12,14 @@ export default function Login({
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
-    console.log('this is e ',e);
+    //console.log.log('this is e ',e);
     e.preventDefault()
-    console.log("username and password", username, password);
+    //console.log.log("username and password", username, password);
     if (username === "" || password === "") {
       setMessages([{ error: "Missing credentials" }]);
     } else {
       axios.post("/users/login", { username, password }).then((res) => {
-        /* console.log(
+        /* console.log.log(
           "%c this is response from /users/login",
           " color:green",
           res.data
@@ -28,7 +28,7 @@ export default function Login({
           setMessages(res.data.messages);
         }
         if (res.data.user) {
-          console.log(res.data.user._id);
+          //console.log.log(res.data.user._id);
           localStorage.setItem("userId", `${res.data.user._id}`);
           localStorage.setItem("userImage", `${res.data.user.userImage}`);
           setTimeout(() => {

@@ -45,12 +45,12 @@ router.get("/add", ensureAuthenticated, function(req, res) {
 
 // Add Submit POST Route
 router.post("/add",ensureAuthenticated, upload.single("pic"), function(req, res) {
-  console.log("this is for from input:-");
-  console.log(JSON.stringify(req.body));
-  console.log("this is for file input:-");
-  console.log(JSON.stringify(req.file));
-  console.log("check for req.data");
-  console.log(req.data);
+  //console.log.log("this is for from input:-");
+  //console.log.log(JSON.stringify(req.body));
+  //console.log.log("this is for file input:-");
+  //console.log.log(JSON.stringify(req.file));
+  //console.log.log("check for req.data");
+  //console.log.log(req.data);
   if (!req.file) {
     req.checkBody("title", "Title is required").notEmpty();
     req.checkBody("body", "Body is required").notEmpty();
@@ -74,25 +74,25 @@ router.post("/add",ensureAuthenticated, upload.single("pic"), function(req, res)
       article.userImage = req.user.userImage;
       var date = new Date();
       article.date = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-      console.log("this is article.date :-");
-      console.log(JSON.stringify(article.date));
+      //console.log.log("this is article.date :-");
+      //console.log.log(JSON.stringify(article.date));
       article.pic = req.body.pic;
-      console.log("this is article.pic:-");
-      console.log(JSON.stringify(article.pic));
+      //console.log.log("this is article.pic:-");
+      //console.log.log(JSON.stringify(article.pic));
 
       article.save(function(err) {
         if (err) {
-          console.log(err);
+          console.log.log(err);
           return;
         } else {
-          console.log("Formdata added");
+          //console.log.log("Formdata added");
           res.send([{success: "Article Added"}]);
         }
       });
     }
   } else {
-    console.log("This is uploaded pics file name :-");
-    console.log(req.file.filename);
+    //console.log.log("This is uploaded pics file name :-");
+    //console.log.log(req.file.filename);
     req.file.owner = req.user._id;
     res.send([{success: "Article Added"}]);
   }
@@ -119,11 +119,11 @@ router.post("/edit/:id", upload.single("pic"), function(req, res) {
     article.userImage = req.user.userImage;
     var date = new Date();
     article.date = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-    console.log("this is article.date :-");
-    console.log(JSON.stringify(article.date));
+    //console.log.log("this is article.date :-");
+    //console.log.log(JSON.stringify(article.date));
     article.pic = req.body.pic;
-    console.log("this is article.pic:-");
-    console.log(JSON.stringify(article.pic));
+    //console.log.log("this is article.pic:-");
+    //console.log.log(JSON.stringify(article.pic));
 
     let query = {
       _id: req.params.id,
@@ -131,10 +131,10 @@ router.post("/edit/:id", upload.single("pic"), function(req, res) {
 
     Article.update(query, article, function(err) {
       if (err) {
-        console.log(err);
+        console.log.log(err);
         return;
       } else {
-        console.log("success", "Article Updated");
+        //console.log.log("success", "Article Updated");
         res.send([{success:"Article updated"}]);
       }
     });
@@ -145,9 +145,9 @@ router.post("/edit/:id", upload.single("pic"), function(req, res) {
         },
         function(err) {
           if (err) {
-            console.log(err);
+            console.log.log(err);
           } else {
-            console.log("Related image deleted");
+            //console.log.log("Related image deleted");
           }
         }
       );
@@ -156,8 +156,8 @@ router.post("/edit/:id", upload.single("pic"), function(req, res) {
     
 
   } else {
-    console.log("This is uploaded pics file name :-");
-    console.log(req.file.filename);
+    //console.log.log("This is uploaded pics file name :-");
+    //console.log.log(req.file.filename);
     req.file.owner = req.user._id;
     res.send([{success:"Article image uploaded"}]);
   }
@@ -183,15 +183,15 @@ router.delete("/:id", function(req, res) {
         },
         function(err) {
           if (err) {
-            console.log(err);
+            console.log.log(err);
           } else {
-            console.log("Related image deleted");
+            //console.log.log("Related image deleted");
           }
         }
       );
       Article.remove(query, function(err) {
         if (err) {
-          console.log(err);
+          console.log.log(err);
         }
         res.send([{success:"Article deleted successfully"}]);
       });
@@ -223,7 +223,7 @@ router.get("/pic/:filename", (req, res) => {
       (err, file) => {
         //Check if files
         if (!file || file.length === 0) {
-          console.log("no file " + file);
+          //console.log.log("no file " + file);
           return res.status(404).json({
             err: "No file exist",
           });

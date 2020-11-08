@@ -42,7 +42,7 @@ const upload = multer({
 // Register Proccess
 router.post("/register", upload.single("userImage"), function(req, res) {
   if (!req.file) {
-    console.log("this is req.body from users/register", req.body);
+    //console.log.log("this is req.body from users/register", req.body);
     const name = req.body.name;
     const email = req.body.email;
     const username = req.body.username;
@@ -80,15 +80,15 @@ router.post("/register", upload.single("userImage"), function(req, res) {
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(newUser.password, salt, function(err, hash) {
           if (err) {
-            console.log(err);
+            console.log.log(err);
           }
           newUser.password = hash;
           newUser.save(function(err) {
             if (err) {
-              console.log(err);
+              console.log.log(err);
               return;
             } else {
-              console.log("New user created redirecting to login page");
+              //console.log.log("New user created redirecting to login page");
               res.end();
             }
           });
@@ -96,8 +96,8 @@ router.post("/register", upload.single("userImage"), function(req, res) {
       });
     }
   } else {
-    console.log("This is registration uploaded pics file name :-");
-    console.log(req.file.filename);
+    //console.log.log("This is registration uploaded pics file name :-");
+    //console.log.log(req.file.filename);
     req.file.owner = req.user._id;
     res.send([{ success: "Registration successful" }]);
   }
@@ -105,12 +105,12 @@ router.post("/register", upload.single("userImage"), function(req, res) {
 
 // Login Process
 router.post("/login", function(req, res, next) {
-  console.log("from /login checking if req.user", req.user);
+  //console.log.log("from /login checking if req.user", req.user);
   passport.authenticate("local", {}, (error, user, messages) => {
 
     if (user) {
       req.logIn(user, (err) => {
-        if (err) console.log(error);
+        if (err) console.log.log(error);
         return res.send({ user, messages });
       });
     } else {
@@ -124,7 +124,7 @@ router.post("/login", function(req, res, next) {
 // logout
 router.get("/logout", function(req, res) {
   req.logout();
-  console.log("user loggedout");
+  //console.log.log("user loggedout");
   res.send([{ success: "You are now Logged out" }]);
 });
 
@@ -141,7 +141,7 @@ router.get("/userImage/:filename", (req, res) => {
       (err, file) => {
         //Check if files
         if (!file || file.length === 0) {
-          console.log("no file for users" + file);
+          //console.log.log("no file for users" + file);
           return res.status(404).json({
             err: "No file exist",
           });

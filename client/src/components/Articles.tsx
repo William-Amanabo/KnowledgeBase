@@ -61,17 +61,17 @@ const Articles = ({ userId,setMessages,history,notFound }: PropTypes) => {
         </div>
   );
 
-  console.log(articlesMarkup);
+  //console.log.log(articlesMarkup);
 
   useEffect(() => {
     if (notFound) setMessages([{error: "404 page not found !"}])
     Axios.get("/articles")
       .then((res) => {
         setArticles(res.data);
-        console.log("this is articles", articles);
+        //console.log.log("this is articles", articles);
       })
       .catch((err) => {
-        console.log(err);
+        //console.log.log(err);
       });
   }, []);
 

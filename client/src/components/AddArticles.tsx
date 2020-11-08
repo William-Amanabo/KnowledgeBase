@@ -31,7 +31,7 @@ export default function AddArticles({userId, setMessages,history}:{userId:string
       }, 2000);
     }
 
-    console.log("picRef.current", picRef.current);
+    //console.log.log("picRef.current", picRef.current);
     var picFile = picRef.current.files[0];
 
     if (picFile !== undefined) {
@@ -52,7 +52,7 @@ export default function AddArticles({userId, setMessages,history}:{userId:string
           }),
         ])
         .then((resArr) => {
-          console.log("resArray from axios.all add article", resArr);
+          //console.log.log("resArray from axios.all add article", resArr);
           if(resArr[0].data[0].success){
             setMessages(resArr[0].data);
             setTimeout(() => {
@@ -70,7 +70,7 @@ export default function AddArticles({userId, setMessages,history}:{userId:string
           body: body,
         })
         .then((res) => {
-          console.log("res from axios.post articles/add", res);
+          //console.log.log("res from axios.post articles/add", res);
           if(res.data[0].success){
             setMessages(res.data);
             setTimeout(() => {
@@ -91,7 +91,7 @@ export default function AddArticles({userId, setMessages,history}:{userId:string
 
   useEffect(() => {
     axios.get("/articles/add").then((res: any) => {
-      console.log("this is article gotten from articles/add", res);
+      //console.log.log("this is article gotten from articles/add", res);
       if (res.data[0]) {
         if (res.data[0].error) {
           setMessages(res.data);

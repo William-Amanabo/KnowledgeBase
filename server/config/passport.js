@@ -11,7 +11,7 @@ module.exports = function(passport){
     User.findOne(query, function(err, user){
       if(err) throw [err];
       if(!user){
-        console.log("no user found")
+        //console.log.log("no user found")
         return done(null, false, [{error: 'No user found'}]);
       }
 
@@ -19,10 +19,10 @@ module.exports = function(passport){
       bcrypt.compare(password, user.password, function(err, isMatch){
         if(err) throw [err];
         if(isMatch){
-          console.log("user :",user)
+          //console.log.log("user :",user)
           return done(null,user,[{success:"Login Successful"}]);
         } else {
-          console.log("wrong password")
+          //console.log.log("wrong password")
           return done(null, false, [{error: 'Wrong password'}]);
         }
       });
@@ -30,7 +30,7 @@ module.exports = function(passport){
   }));
 
   passport.serializeUser(function(user, done) {
-    console.log("Serialize user runs")
+    //console.log.log("Serialize user runs")
     done(null, user.id);
   });
 

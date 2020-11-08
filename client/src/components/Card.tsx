@@ -42,9 +42,9 @@ export default function Card({
   };
   const handleDelete = (e) => {
     e.preventDefault()
-    //console.log("Testing delete ReactDOM.findDOMNode(this).parentNode ", ReactDOM.findDOMNode(e).parentNode);
+    //console.log.log("Testing delete ReactDOM.findDOMNode(this).parentNode ", ReactDOM.findDOMNode(e).parentNode);
     axios.delete("/articles/" + id).then((res) => {
-      //console.log('res from handleDelete',res)
+      //console.log.log('res from handleDelete',res)
       setMessages(res.data);
       deleteCard(id);
       /* setTimeout(() => { 
