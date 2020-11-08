@@ -13,7 +13,7 @@ const Grid = require('gridfs-stream');
 const crypto = require('crypto');
 
 mongoose.connect(config.database,{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false}).then(()=>{
-    console.log.log("DataBase connected successfully")
+    console.log("DataBase connected successfully")
 }).catch(err=>{
     console.log.error(err) 
 });
@@ -21,16 +21,16 @@ let db = mongoose.connection;
 
 // Check connection
 db.once('open', function() {
-    console.log.log('Connected to MongoDB');
+    console.log('Connected to MongoDB');
     gfs = Grid(db.db, mongoose.mongo);
     gfs.collection('uploads');
-    console.log.log('Connected to uploads');
+    console.log('Connected to uploads');
 });
 
 
 // Check for DB errors
 db.on('error', function(err) {
-    console.log.log(err);
+    console.log(err);
 });
 
 // Configuring storage.... 
@@ -110,9 +110,9 @@ app.use(express.static(path.join(__dirname,'../client/build')));
 // Home Route
 app.get('/articles', function(req, res) {
     Article.find({}, function(err, articles) {
-        //console.log.log(articles);
+        //console.log(articles);
         if (err) {
-            console.log.log(err);
+            console.log(err);
             res.json({error:"Error getting articles"});
             throw err;
         } else {
@@ -129,12 +129,12 @@ app.use('/users', users);
 
 app.get('*', function(req, res, next) {
     res.locals.user = req.user || null;
-    //console.log.log("this is user from '*' :",res.locals.user)
+    //console.log("this is user from '*' :",res.locals.user)
     res.sendFile(path.join(__dirname,'../client/build/index.html'));
 });
 
 // Start Server
 const port = process.env.PORT || 5000
 app.listen(port, function() {
-    console.log.log('Server started on port '+port);
+    console.log('Server started on port '+port);
 })
