@@ -40,14 +40,14 @@ export default function Register({
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //console.log.log("picRef.current", picRef.current);
+    //console.log("picRef.current", picRef.current);
     /* Button animation */
     if (e.target !== null) {
       let x = e.clientX - e.target.offsetLeft;
       let y = e.clientY - e.target.offsetTop ;
 
       let ripples = document.createElement("span");
-      //console.log.log("x",x,'y',y)
+      //console.log("x",x,'y',y)
       ripples.style.left = x + "px";
       //ripples.style.top = y + "px";
       e.target.appendChild(ripples);
@@ -72,7 +72,7 @@ export default function Register({
           userImage: picFile.name,
         })
         .then((res) => {
-          //console.log.log("this is res from users/registration", res);
+          //console.log("this is res from users/registration", res);
           if (res.data !== "") setMessages(res.data);
           if (!res.data) {
             axios.post("/users/login", { username, password }).then((res) => {
@@ -83,7 +83,7 @@ export default function Register({
                 url: "/users/register",
                 data: formData,
               }).then((res) => {
-                //console.log.log("resArray from axios login users/register post image",res);
+                //console.log("resArray from axios login users/register post image",res);
                 if (!res.data) {
                   setMessages([
                     { success: "You are now registered and Logged in" },
@@ -113,7 +113,7 @@ export default function Register({
           password,
         })
         .then((res) => {
-          //console.log.log("res from axios.post users/register", res);
+          //console.log("res from axios.post users/register", res);
           setMessages(res.data);
         });
     }

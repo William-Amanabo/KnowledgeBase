@@ -33,12 +33,12 @@ export default function AppContainer({
 
       hamburger.addEventListener("click", () => {
         t1.reversed() ? t1.play() : t1.reverse();
-        //console.log.log("button clicked");
+        //console.log("button clicked");
       });
 
       hamburger.addEventListener('mouseout',()=>{
         t1.reversed()? t1.play(): t1.reverse();
-        //console.log.log("button clicked")
+        //console.log("button clicked")
       })
     }
       
@@ -65,7 +65,7 @@ export default function AppContainer({
     t4.reversed(true);
     if (themeSwitch)
       themeSwitch.addEventListener("click", () => {
-        //console.log.log("switch event listener added");
+        //console.log("switch event listener added");
         const dark = () => {
           t4.play();
           window.localStorage.setItem("theme", "dark");
@@ -110,12 +110,12 @@ export default function AppContainer({
     <>
       <li className="btn">
         <Link to={"/"}>
-          <a href="/">Home</a>
+          Home
         </Link>
       </li>
       <li className="btn">
         <Link to={"/addArticle"}>
-          <a href=''>Add Article</a>
+          Add Article
         </Link>
       </li>
       <li className="btn">
@@ -134,17 +134,17 @@ export default function AppContainer({
     <>
       <li className="btn">
         <Link to={"/"}>
-          <a href="">Home</a>
+        Home
         </Link>
       </li>
       <li className="btn">
         <Link to={"/login"}>
-          <a href="">Login</a>
+          Login
         </Link>
       </li>
       <li className="btn">
         <Link to={"/register"}>
-          <a href="">Register</a>
+          Register
         </Link>
       </li>
     </>

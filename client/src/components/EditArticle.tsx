@@ -27,7 +27,7 @@ export default function EditArticles({match,setMessages,history}:{match:any,setM
       let y = e.clientY - e.target.offsetTop ;
 
       let ripples = document.createElement("span");
-      //console.log.log("x",x,'y',y)
+      //console.log("x",x,'y',y)
       ripples.style.left = x + "px";
       //ripples.style.top = y + "px";
       e.target.appendChild(ripples);
@@ -38,7 +38,7 @@ export default function EditArticles({match,setMessages,history}:{match:any,setM
     }
 
     //var pic:HTMLInputElement = document.getElementById('pic');
-    //console.log.log("picRef.currrent", picRef.current);
+    //console.log("picRef.currrent", picRef.current);
     var picFile = picRef.current.files[0];
 
     if (picFile !== undefined) {
@@ -60,7 +60,7 @@ export default function EditArticles({match,setMessages,history}:{match:any,setM
           }),
         ])
         .then((resArr) => {
-          //console.log.log("resArray from axios.all", resArr);
+          //console.log("resArray from axios.all", resArr);
           if(resArr[0].data[0].success){
             setMessages(resArr[0].data);
             setTimeout(() => {
@@ -79,7 +79,7 @@ export default function EditArticles({match,setMessages,history}:{match:any,setM
           pic: backupPic,
         })
         .then((res) => {
-          //console.log.log("res from axios.post articles/edit", res);
+          //console.log("res from axios.post articles/edit", res);
           if(res.data[0].success){
             setMessages(res.data);
             
@@ -102,7 +102,7 @@ export default function EditArticles({match,setMessages,history}:{match:any,setM
   useEffect(() => {
     const id = match.params.id;
     axios.get("/articles/edit/" + id).then((res: any) => {
-      //console.log.log("this is article gotten from articles/edit/id", res);
+      //console.log("this is article gotten from articles/edit/id", res);
       titleRef.current.value = res.data.title;
       bodyRef.current.value = res.data.body;
       previewRef.current.style.background=`url('/articles/pic/${res.data.pic}')`;
